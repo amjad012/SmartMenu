@@ -15,7 +15,7 @@ namespace API.Controllers
             _context = context;
 
         }
-    [HttpGet]//api/table someone reach this endpoint 
+    [HttpGet]//api/table someone reach this endpoints 
     public async Task<ActionResult<List<Table>>>GetTables()
     {
         return await _context.Tables.ToListAsync();
