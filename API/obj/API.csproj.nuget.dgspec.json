@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\API\\API.csproj": {}
+    "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\API\\API.csproj": {
+    "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\API\\obj\\",
+        "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\Application.csproj"
+              "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\Application.csproj"
               }
             }
           }
@@ -82,17 +82,17 @@
         }
       }
     },
-    "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\Application.csproj": {
+    "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Application\\obj\\",
+        "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -106,11 +106,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj"
+              "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\Persistence.csproj"
+              "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -144,17 +144,17 @@
         }
       }
     },
-    "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj": {
+    "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -199,17 +199,17 @@
         }
       }
     },
-    "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\Persistence.csproj": {
+    "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Persistence\\obj\\",
+        "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -223,8 +223,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu\\Domain\\Domain.csproj"
+              "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\amjada\\Desktop\\demo\\SmartMenu\\SmartMenu\\Domain\\Domain.csproj"
               }
             }
           }
