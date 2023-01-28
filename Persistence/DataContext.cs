@@ -14,5 +14,7 @@ namespace Persistence
 
         }
         public DbSet<Table> Tables  { get; set; }// name of table in database
+        // public DbSet<Menu> Menus { get; set; }//name of the table in database
+        
     }
 }

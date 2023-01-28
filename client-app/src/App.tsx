@@ -9,11 +9,18 @@ import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 function App() {
   const [tables, setTables] = useState([]);
+  const[menus, setMenus] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/tables')
       .then(response => {
         setTables(response.data)
+      })
+  }, [])
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/menus')
+      .then(response => {
+        setMenus(response.data)
       })
   }, [])
   return (
@@ -23,6 +30,13 @@ function App() {
         {tables.map((table:any) => (
           <li key={table.id}>
             {table.number}
+          </li>
+        ))}
+      </List>
+      <List>
+        {menus.map((menu:any) =>(
+          <li key={menu.id}>
+            {menu.name}
           </li>
         ))}
       </List>
