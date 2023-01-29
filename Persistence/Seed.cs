@@ -66,30 +66,30 @@ namespace Persistence
                     Date = DateTime.Now.AddMonths(-2),
                 }
             };
-            //  if (context.Menus.Any()) return;
-            // var Menus = new List<Menu>
-            // {
-            //     new Menu
-            //     {
-            //         Name = "breakfast plate",
-            //         Category="Breakfast",
-            //         Kcal=400,
-            //         Price=30,
-            //         Description="Very Good"
+             if (context.Menus.Any()) return;
+            var Menus = new List<Menu>
+            {
+                new Menu
+                {
+                    Name = "breakfast plate",
+                    Category="Breakfast",
+                    Kcal=400,
+                    Price=30,
+                    Description="Very Good"
 
-            //     },
-            //     new Menu
-            //     {
-            //         Name = "Tuna Sandwich",
-            //         Category="Sandwich",
-            //         Kcal=240,
-            //         Price=20,
-            //         Description="Good food for gym"
+                },
+                new Menu
+                {
+                    Name = "Tuna Sandwich",
+                    Category="Sandwich",
+                    Kcal=240,
+                    Price=20,
+                    Description="Good food for gym"
 
-            //     }
-            // };
+                }
+            };
             await context.Tables.AddRangeAsync(tables);//save to the memory
-            // await context.Menus.AddRangeAsync(Menus);
+            await context.Menus.AddRangeAsync(Menus);
             await context.SaveChangesAsync();//save to the database
         }
     }

@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vlOqVYJ7uniC9gE8cqmKLPLHvJImgiqmm8z7LL1aNHkVHmHnsY7HhqC8LX1eUzEcLyWeZObUcZu7zqElQb7CtA==",
+  "dgSpecHash": "faFRg0gEqpK1u/tPlouL1uKoakHzBEmpplhSKl3rbKipjoj+r7LaCQce3npE83fS0shuLbG5s4cYrcEnYaKlCw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\arabi\\OneDrive\\Desktop\\SmartMenu-1\\Application\\Application.csproj",
+  "projectFilePath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu\\Application\\Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\arabi\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
+    "C:\\Users\\arabi\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\arabi\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.0.0\\mediatr.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\arabi\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.2\\microsoft.data.sqlite.core.7.0.2.nupkg.sha512",
     "C:\\Users\\arabi\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
     "C:\\Users\\arabi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.2\\microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
