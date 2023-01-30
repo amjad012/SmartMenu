@@ -27,7 +27,7 @@ namespace Application.Tables
             public async Task<Table> Handle(Qeury request, CancellationToken cancellationToken)
             {
                return await _context.Tables.FindAsync(request.Id);
-            }
+            } 
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JCvrqIC2qnoO2Fft/alXgK9wifh69wWW3+TBBclyuMbDhTl39HynXOS49585TEA7WA58RJGaEsZiFNBIB3y46Q==",
+  "dgSpecHash": "OHs6WJ1NZAbPpzz2ARYORmQKNKBUim7ra39hbujEqcYPEeX9L0kWWQMbWpUNSjV9LENaRzKKbrTOpiGg40+UMw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\demo\\SmartMenu\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
