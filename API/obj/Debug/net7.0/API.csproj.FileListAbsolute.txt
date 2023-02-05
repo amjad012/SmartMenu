@@ -413,3 +413,5 @@ D:\demo\SmartMenu\API\obj\Debug\net7.0\refint\API.dll
 D:\demo\SmartMenu\API\obj\Debug\net7.0\API.pdb
 D:\demo\SmartMenu\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 D:\demo\SmartMenu\API\obj\Debug\net7.0\ref\API.dll
+D:\demo\SmartMenu\API\bin\Debug\net7.0\AutoMapper.dll
+D:\demo\SmartMenu\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

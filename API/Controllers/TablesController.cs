@@ -15,8 +15,6 @@ namespace API.Controllers
     {
        
     [HttpGet]//api/table someone reach this endpoints 
-    
-   
     public async Task<ActionResult<List<Table>>>GetTables()
     {
         return await Mediator.Send(new List.Qeury()); //Mediator from BaseApiController class

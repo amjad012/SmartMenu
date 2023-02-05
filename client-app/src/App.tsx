@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import { Header } from 'semantic-ui-react';
 import List from 'semantic-ui-react/dist/commonjs/elements/List';
-import Button from 'semantic-ui-react/dist/commonjs/elements/Button';
 
 
 function App() {
   const [tables, setTables] = useState([]);
-  const[menus, setMenus] = useState([]);
+  const[products, setProducts] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:5000/api/tables')
@@ -18,9 +16,9 @@ function App() {
       })
   }, [])
   useEffect(() => {
-    axios.get('http://localhost:5000/api/menus')
+    axios.get('http://localhost:5000/api/products')
       .then(response => {
-        setMenus(response.data)
+        setProducts(response.data)
       })
   }, [])
   return (
@@ -34,7 +32,7 @@ function App() {
         ))}
       </List>
       <List>
-        {menus.map((menu:any) =>(
+        {products.map((menu:any) =>(
           <li key={menu.id}>
             {menu.name}
           </li>

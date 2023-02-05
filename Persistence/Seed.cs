@@ -66,10 +66,10 @@ namespace Persistence
                     Date = DateTime.Now.AddMonths(-2),
                 }
             };
-             if (context.Menus.Any()) return;
-            var Menus = new List<Menu>
+             if (context.Products.Any()) return;
+            var Products = new List<Product>
             {
-                new Menu
+                new Product
                 {
                     Name = "breakfast plate",
                     Category="Breakfast",
@@ -78,7 +78,7 @@ namespace Persistence
                     Description="Very Good"
 
                 },
-                new Menu
+                new Product
                 {
                     Name = "Tuna Sandwich",
                     Category="Sandwich",
@@ -89,7 +89,7 @@ namespace Persistence
                 }
             };
             await context.Tables.AddRangeAsync(tables);//save to the memory
-            await context.Menus.AddRangeAsync(Menus);
+             await context.Products.AddRangeAsync(Products);
             await context.SaveChangesAsync();//save to the database
         }
     }

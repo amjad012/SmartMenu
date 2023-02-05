@@ -12,7 +12,7 @@ namespace Application.Tables
     {
         public class Command : IRequest//difference between a command and the queries return data commands do not
         {
-            public Table Table { get; set; }//this is what we're going to want to receive as a parameter from our API.
+            public Table Table { get; set; }//this is what we're going to receive as a parameter from our API.
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -25,7 +25,7 @@ namespace Application.Tables
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context.Tables.AddAsync(request.Table);//we're not accessing the database at this point of our code
+                await _context.Tables.AddAsync(request.Table);//we're not accessing the database at this point of our code
                 //we only add table in memory
                 await _context.SaveChangesAsync();
 

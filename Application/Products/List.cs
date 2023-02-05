@@ -3,13 +3,13 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
-namespace Application.Tables
+namespace Application.Products
 {
     public class List
     {
-        public class Qeury : IRequest<List<Table>> {}
+        public class Qeury : IRequest<List<Product>> {}
 
-        public class Handler : IRequestHandler<Qeury, List<Table>>
+        public class Handler : IRequestHandler<Qeury, List<Product>>
         {
         private readonly DataContext _context;
     
@@ -17,10 +17,10 @@ namespace Application.Tables
            {        
             _context = context;
            }
-            public async Task<List<Table>> Handle(Qeury request,CancellationToken token)
+            public async Task<List<Product>> Handle(Qeury request,CancellationToken token)
             {
                 
-                return await _context.Tables.ToListAsync();
+                return await _context.Products.ToListAsync();
             }
         }
     }
