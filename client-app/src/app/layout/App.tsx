@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import axios from 'axios';
 import { Header } from 'semantic-ui-react';
 import List from 'semantic-ui-react/dist/commonjs/elements/List';
@@ -32,9 +31,10 @@ function App() {
         ))}
       </List>
       <List>
-        {products.map((menu:any) =>(
-          <li key={menu.id}>
-            {menu.name}
+        {products.map((product:any) =>(
+          <li key={product.id}><br></br>
+            {product.name}<br></br>
+            {product.category}
           </li>
         ))}
       </List>
