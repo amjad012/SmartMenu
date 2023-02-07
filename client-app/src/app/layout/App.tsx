@@ -6,6 +6,7 @@ import { Table } from '../models/table';
 import { Product } from '../models/product';
 import NavBar from './NavBar';
 import TableDashboard from '../../features/tables/dashboard/TableDashboard';
+import ProductDashboard from '../../features/product/dashboard/ProductDashboard';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
     <>     
     <NavBar />
     <Container style={{marginTop: '7em'}}>
-      <TableDashboard tables={tables} products={products}/>
+      <TableDashboard tables={tables}/>
+      <ProductDashboard products={products}/>
     </Container>
      
     </>

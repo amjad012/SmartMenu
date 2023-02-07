@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\demo\\SmartMenu\\Domain\\Domain.csproj": {}
+    "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "D:\\demo\\SmartMenu\\Domain\\Domain.csproj": {
+    "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\demo\\SmartMenu\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\demo\\SmartMenu\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
-        "outputPath": "D:\\demo\\SmartMenu\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

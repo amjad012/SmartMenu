@@ -18,7 +18,7 @@ export default function TableList({tables}: Props) {
                             <Item.Header as='a'>{table.number}</Item.Header>
                             <Item.Meta>{table.date}</Item.Meta>
                             <Item.Description>
-                                
+                                Description here
                             </Item.Description>
                             <Item.Extra>
                                 {/* <Button floated='right' content='View' color='blue'

@@ -1392,19 +1392,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\amjada\\.nuget\\packages\\": {}
+    "C:\\Users\\arabi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\demo\\SmartMenu\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\demo\\SmartMenu\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\amjada\\.nuget\\packages\\",
-      "outputPath": "D:\\demo\\SmartMenu\\Application\\obj\\",
+      "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\arabi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\amjada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\arabi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1418,11 +1418,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\demo\\SmartMenu\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\demo\\SmartMenu\\Domain\\Domain.csproj"
+            "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Domain\\Domain.csproj"
             },
-            "D:\\demo\\SmartMenu\\Persistence\\Persistence.csproj": {
-              "projectPath": "D:\\demo\\SmartMenu\\Persistence\\Persistence.csproj"
+            "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\arabi\\OneDrive\\Desktop\\Final-Project\\SmartMenu-1\\Persistence\\Persistence.csproj"
             }
           }
         }
