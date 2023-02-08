@@ -8,18 +8,28 @@ import TableList from './TableList';
 
 interface Props {
     tables: Table[];
-   
+    selectedTable: Table | undefined;
+    selectTable:(id:string) => void;
+    cancelSelectTable:() => void;
+    editMode:boolean;
+    openForm:(id: string) => void;
+    closeForm:() => void;
 }
-export default function TableDashboard({tables}:Props){
+export default function TableDashboard({tables,selectedTable, 
+    selectTable,cancelSelectTable,editMode,openForm,closeForm}:Props){
     return(
         <Grid>
             <Grid.Column width='10'>
-            <TableList tables={tables}/>
+            <TableList tables={tables} selectTable={selectTable}/>
             </Grid.Column>
             <Grid.Column width='6'>
-                {tables[0] &&
-                    <TableDetails table={tables[0]}/>}
-                    <TableFrom />
+                {selectedTable && !editMode &&
+                    <TableDetails table={selectedTable}
+                    cancelSelectTable={cancelSelectTable}
+                    openForm={openForm}
+                    />}
+                    {editMode &&
+                    <TableFrom closeForm={closeForm} table={selectedTable}/>}
             </Grid.Column>
         </Grid>
     )

@@ -4,27 +4,28 @@ import {Table} from "../../../app/models/table";
 
 interface Props {
     tables: Table[];
-    // selectTable: (id: string) => void;
+    selectTable:(id:string) => void;
     // deleteTable: (id: string) => void;
 }
 
-export default function TableList({tables}: Props) {
+export default function TableList({tables,selectTable}: Props) {
     return (
         <Segment>
             <Item.Group divided>
                 {tables.map(table => (
                     <Item key={table.id}>
                         <Item.Content>
-                            <Item.Header as='a'>{table.number}</Item.Header>
+                            <Item.Header as='a'>Table Number: {table.number}</Item.Header>
                             <Item.Meta>{table.date}</Item.Meta>
                             <Item.Description>
                                 Description here
                             </Item.Description>
                             <Item.Extra>
-                                {/* <Button floated='right' content='View' color='blue'
-                                        onClick={() => selectTable(table.id)}/>
-                                <Button floated='right' content='Delete' color='red'
-                                        onClick={() => deleteTable(table.id)}/> */}
+                                 <Button floated='right' content='View' color='blue'
+                                         onClick={() => selectTable(table.id)}
+                                        />
+                                {/* <Button floated='right' content='Delete' color='red'
+                                        onClick={() => deleteTable(table.id)}/>  */}
                                 {/* <Label basic content={table.category}/> */}
                             </Item.Extra>
                         </Item.Content>

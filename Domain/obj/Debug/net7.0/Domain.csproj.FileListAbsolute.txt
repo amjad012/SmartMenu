@@ -82,3 +82,15 @@ C:\Users\arabi\OneDrive\Desktop\Final-Project\SmartMenu-1\Domain\obj\Debug\net7.
 C:\Users\arabi\OneDrive\Desktop\Final-Project\SmartMenu-1\Domain\obj\Debug\net7.0\refint\Domain.dll
 C:\Users\arabi\OneDrive\Desktop\Final-Project\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.pdb
 C:\Users\arabi\OneDrive\Desktop\Final-Project\SmartMenu-1\Domain\obj\Debug\net7.0\ref\Domain.dll
+D:\demo\SmartMenu-1\Domain\bin\Debug\net7.0\Domain.deps.json
+D:\demo\SmartMenu-1\Domain\bin\Debug\net7.0\Domain.dll
+D:\demo\SmartMenu-1\Domain\bin\Debug\net7.0\Domain.pdb
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.dll
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\refint\Domain.dll
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\Domain.pdb
+D:\demo\SmartMenu-1\Domain\obj\Debug\net7.0\ref\Domain.dll

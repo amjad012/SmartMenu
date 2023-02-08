@@ -1,7 +1,12 @@
 import React from 'react';
 import { Button, Form, Segment } from 'semantic-ui-react';
+import { Table } from '../../../app/models/table';
 
-export default function TableFrom(){
+interface Props{
+    table:Table | undefined;
+    closeForm:() => void;
+}
+export default function TableFrom({table,closeForm}:Props){
     return (
         <Segment clearing>
             <Form>
@@ -9,7 +14,7 @@ export default function TableFrom(){
                 <Form.Input placeholder='Number'/>
                 <Form.Input placeholder='Number'/>
                 <Button floated='right' positive type='submit' content='Submit'/>
-                <Button floated='right' type='button' content='Cancel'/>
+                <Button onClick={closeForm} floated='right' type='button' content='Cancel'/>
             </Form>
         </Segment>
     )

@@ -12,6 +12,8 @@ import ProductDashboard from '../../features/product/dashboard/ProductDashboard'
 function App() {
   const [tables, setTables] = useState<Table[]>([]);
   const[products, setProducts] = useState<Product[]>([]);
+  const [selectedTable, setSelectedTable] = useState<Table | undefined>(undefined);
+  const[editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     axios.get<Table[]>('http://localhost:5000/api/tables')
@@ -25,12 +27,35 @@ function App() {
         setProducts(response.data)
       })
   }, [])
+
+  function handleSelectTable(id: string) {
+    setSelectedTable(tables.find(x => x.id === id))
+  }
+  function handleCancelSelectTable(){
+    setSelectedTable(undefined)
+  }
+  function handleFormOpen(id? : string){
+    id ? handleSelectTable(id) : handleCancelSelectTable(); // if the id not null handleSelectTable else... handleCancel..
+    setEditMode(true);
+  }
+  function handleFormClose(){
+    setEditMode(false);
+  }
+
   // using typescript here also help us to detectd the problems and have many option's when we write table.
   return (
     <>     
-    <NavBar />
+    <NavBar openForm={handleFormOpen} />
     <Container style={{marginTop: '7em'}}>
-      <TableDashboard tables={tables}/>
+      <TableDashboard 
+        tables={tables}
+        selectedTable={selectedTable}
+        selectTable={handleSelectTable}
+        cancelSelectTable={handleCancelSelectTable}
+        editMode={editMode}
+        openForm={handleFormOpen}
+        closeForm={handleFormClose}
+      />
       <ProductDashboard products={products}/>
     </Container>
      
