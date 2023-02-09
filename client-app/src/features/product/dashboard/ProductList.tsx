@@ -1,11 +1,12 @@
 import React from 'react'
-import { Item, ItemContent, Segment } from 'semantic-ui-react'
+import { Button, Item, ItemContent, Segment } from 'semantic-ui-react'
 import { Product } from '../../../app/models/product'
 
 interface Props {
     products : Product[];
+    selectProduct:(id:string) => void;
 }
-export default function ProductList({products}: Props)
+export default function ProductList({products,selectProduct}: Props)
 {
     return (
         <Segment>
@@ -18,7 +19,9 @@ export default function ProductList({products}: Props)
                             <Item.Description>{product.description}</Item.Description>
 
                             <Item.Extra>
-                                
+                            <Button floated='right' content='View' color='blue'
+                                         onClick={() => selectProduct(product.id)}
+                                        />
                             </Item.Extra>
                         </Item.Content>
                     </Item>

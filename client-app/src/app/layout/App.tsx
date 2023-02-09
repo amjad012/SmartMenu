@@ -8,11 +8,13 @@ import NavBar from './NavBar';
 import TableDashboard from '../../features/tables/dashboard/TableDashboard';
 import ProductDashboard from '../../features/product/dashboard/ProductDashboard';
 
-
 function App() {
   const [tables, setTables] = useState<Table[]>([]);
   const[products, setProducts] = useState<Product[]>([]);
+
   const [selectedTable, setSelectedTable] = useState<Table | undefined>(undefined);
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
+
   const[editMode, setEditMode] = useState(false);
 
   useEffect(() => {
@@ -28,6 +30,7 @@ function App() {
       })
   }, [])
 
+  //for Table
   function handleSelectTable(id: string) {
     setSelectedTable(tables.find(x => x.id === id))
   }
@@ -42,10 +45,25 @@ function App() {
     setEditMode(false);
   }
 
+  //for product
+  function handleSelectProduct(id:string) {
+    setSelectedProduct(products.find(x=> x.id === id))
+  }
+  function handleCancelSelectProduct(){
+    setSelectedProduct(undefined)
+  }
+  function handleFormOpenProduct(id? : string){
+    id ? handleSelectProduct(id) : handleCancelSelectProduct(); 
+    setEditMode(true);
+  }
+  function handleFormCloseProduct(){
+    setEditMode(false);
+  }
+
   // using typescript here also help us to detectd the problems and have many option's when we write table.
   return (
     <>     
-    <NavBar openForm={handleFormOpen} />
+    <NavBar openForm={handleFormOpen} openFormProduct={handleFormOpenProduct}/>
     <Container style={{marginTop: '7em'}}>
       <TableDashboard 
         tables={tables}
@@ -56,7 +74,15 @@ function App() {
         openForm={handleFormOpen}
         closeForm={handleFormClose}
       />
-      <ProductDashboard products={products}/>
+      <ProductDashboard 
+        products={products}
+        selectedProduct={selectedProduct}
+        selectProduct={handleSelectProduct}
+        cancelSelectProduct={handleCancelSelectProduct}
+        editMode={editMode}
+        openFormProduct={handleFormOpenProduct}
+        closeFormProduct={handleFormCloseProduct}
+      />
     </Container>
      
     </>

@@ -17,7 +17,7 @@ export default function TableDetails({table,cancelSelectTable,openForm}:Props){
         <span>{table.date} </span>
       </Card.Meta>
       <Card.Description>
-        Description here
+        Description heres
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
