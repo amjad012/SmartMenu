@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import TableDashboard from '../../features/tables/dashboard/TableDashboard';
 import ProductDashboard from '../../features/product/dashboard/ProductDashboard';
 import {v4 as uuid} from 'uuid';
+import agent from '../api/agent';
 
 function App() {
   const [tables, setTables] = useState<Table[]>([]);
@@ -18,9 +19,9 @@ function App() {
   const[editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    axios.get<Table[]>('http://localhost:5000/api/tables')
+    agent.Tables.list()
       .then(response => {
-        setTables(response.data)
+        setTables(response)
       })
   }, [])
   useEffect(() => {
