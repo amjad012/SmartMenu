@@ -1,14 +1,14 @@
-import React from 'react';
-import {Button, Item, Label, Segment} from "semantic-ui-react";
-import {Table} from "../../../app/models/table";
+import { Button, Item, Segment } from "semantic-ui-react";
+import { Table } from "../../../app/models/table";
 
 interface Props {
     tables: Table[];
-    selectTable:(id:string) => void;
-    // deleteTable: (id: string) => void;
+    selectTable: (id: string) => void;
+    deleteTable: (id: string) => void;
+
 }
 
-export default function TableList({tables,selectTable}: Props) {
+export default function TableList({ tables, selectTable, deleteTable }: Props) {
     return (
         <Segment>
             <Item.Group divided>
@@ -21,9 +21,12 @@ export default function TableList({tables,selectTable}: Props) {
                                 Description here
                             </Item.Description>
                             <Item.Extra>
-                                 <Button floated='right' content='View' color='blue'
-                                         onClick={() => selectTable(table.id)}
-                                        />
+                                <Button floated='right' content='View' color='blue'
+                                    onClick={() => selectTable(table.id)}
+                                />
+                                <Button floated='right' content='Delete' color='red'
+                                    onClick={() => deleteTable(table.id)}
+                                />
                                 {/* <Button floated='right' content='Delete' color='red'
                                         onClick={() => deleteTable(table.id)}/>  */}
                                 {/* <Label basic content={table.category}/> */}

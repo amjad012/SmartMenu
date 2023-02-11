@@ -8,28 +8,29 @@ import ProductList from './ProductList';
 interface Props {
     products: Product[];
     selectedProduct: Product | undefined;
-    selectProduct:(id:string) => void;
-    cancelSelectProduct:() => void;
-    editMode:boolean;
-    openFormProduct:(id:string) => void;
-    closeFormProduct:() => void;
+    selectProduct: (id: string) => void;
+    cancelSelectProduct: () => void;
+    editMode: boolean;
+    openFormProduct: (id: string) => void;
+    closeFormProduct: () => void;
+    createOrEdit: (product: Product) => void;
 }
-export default function ProductDashboard({products,selectedProduct,
-    selectProduct,cancelSelectProduct,editMode,openFormProduct,closeFormProduct}: Props){
-    return(
+export default function ProductDashboard({ products, selectedProduct,
+    selectProduct, cancelSelectProduct, editMode, openFormProduct, closeFormProduct, createOrEdit }: Props) {
+    return (
         <Grid>
             <Grid.Column width='10'>
-                <ProductList products={products} selectProduct={selectProduct}/>
+                <ProductList products={products} selectProduct={selectProduct} />
             </Grid.Column>
             <Grid.Column width='6'>
                 {selectedProduct && !editMode &&
                     <ProductDetails product={selectedProduct}
-                    cancelSelectProduct={cancelSelectProduct}
-                    openFormProduct={openFormProduct} 
+                        cancelSelectProduct={cancelSelectProduct}
+                        openFormProduct={openFormProduct}
                     />}
-                    {editMode &&
-                    <ProductForm closeFormProduct={closeFormProduct} product={selectedProduct}/>}
+                {editMode &&
+                    <ProductForm closeFormProduct={closeFormProduct} product={selectedProduct} createOrEdit={createOrEdit} />}
             </Grid.Column>
         </Grid>
-    )  
+    )
 }

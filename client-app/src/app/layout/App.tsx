@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Header } from 'semantic-ui-react';
-import List from 'semantic-ui-react/dist/commonjs/elements/List';
+import { Container } from 'semantic-ui-react';
 import { Table } from '../models/table';
 import { Product } from '../models/product';
 import NavBar from './NavBar';
 import TableDashboard from '../../features/tables/dashboard/TableDashboard';
 import ProductDashboard from '../../features/product/dashboard/ProductDashboard';
+import {v4 as uuid} from 'uuid';
 
 function App() {
   const [tables, setTables] = useState<Table[]>([]);
@@ -44,6 +44,18 @@ function App() {
   function handleFormClose(){
     setEditMode(false);
   }
+  function handleCreateOrEditTable(table : Table)
+  {
+    table.id 
+    ? setTables([...tables.filter(x => x.id !== table.id),table])
+    : setTables([...tables, {...table, id:uuid()}])
+    setEditMode(false);
+    setSelectedTable(table)
+  }
+  function handleDeleteTable(id: string)
+  {
+    setTables([...tables.filter(x => x.id !== id)])
+  }
 
   //for product
   function handleSelectProduct(id:string) {
@@ -59,6 +71,19 @@ function App() {
   function handleFormCloseProduct(){
     setEditMode(false);
   }
+  function handleCreateOrEditProduct(product : Product)
+  {
+    product.id
+    ? setProducts([...products.filter(x => x.id !== product.id),product])
+    :setProducts([...products,product])
+    setEditMode(false);
+    setSelectedProduct(product)
+  }
+  
+
+  
+  
+  
 
   // using typescript here also help us to detectd the problems and have many option's when we write table.
   return (
@@ -73,6 +98,8 @@ function App() {
         editMode={editMode}
         openForm={handleFormOpen}
         closeForm={handleFormClose}
+        createOrEdit={handleCreateOrEditTable}
+        deleteTable={handleDeleteTable}
       />
       <ProductDashboard 
         products={products}
@@ -82,6 +109,7 @@ function App() {
         editMode={editMode}
         openFormProduct={handleFormOpenProduct}
         closeFormProduct={handleFormCloseProduct}
+        createOrEdit={handleCreateOrEditProduct}
       />
     </Container>
      
