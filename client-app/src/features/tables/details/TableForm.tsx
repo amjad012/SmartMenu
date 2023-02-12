@@ -6,8 +6,9 @@ interface Props {
   table: Table | undefined;
   closeForm: () => void;
   createOrEdit: (table: Table) => void;
+  submitting:boolean;
 }
-export default function TableFrom({ table: selectedTable, closeForm, createOrEdit }: Props) {
+export default function TableFrom({ table: selectedTable, closeForm, createOrEdit,submitting }: Props) {
   const initialState = selectedTable ?? {//if table is null
     id: '',
     number: 0,
@@ -19,7 +20,7 @@ export default function TableFrom({ table: selectedTable, closeForm, createOrEdi
     createOrEdit(table);
   }
   //for change the value of input when click Submit button
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = event.target;
     setTable({ ...table, [name]: value })
   }
@@ -27,7 +28,8 @@ export default function TableFrom({ table: selectedTable, closeForm, createOrEdi
     <Segment clearing>
       <Form onSubmit={handleSubmit} autoComplete='off' >
         <Form.Input placeholder="Number" value={table.number} name='number' onChange={handleInputChange} />
-        <Button floated="right" positive type="submit" content="Submit" />
+        <Form.Input type='date'placeholder="Date" value={table.date} name='date' onChange={handleInputChange} />
+        <Button loading={submitting} floated='right' positive type='submit' content='Submit' />
         <Button
           onClick={closeForm}
           floated="right"

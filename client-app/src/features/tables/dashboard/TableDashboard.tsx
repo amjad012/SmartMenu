@@ -14,15 +14,19 @@ interface Props {
     closeForm:() => void;
     createOrEdit: (table : Table) => void;
     deleteTable:(id:string) => void;
+    submitting: boolean;
 }
 export default function TableDashboard({tables,selectedTable, 
-    selectTable,cancelSelectTable,editMode,openForm,closeForm,createOrEdit,deleteTable}:Props){
+    selectTable,cancelSelectTable,editMode,openForm,
+        closeForm,createOrEdit,deleteTable,submitting }:Props){
     return(
         <Grid>
             <Grid.Column width='10'>
             <TableList tables={tables}
                 selectTable={selectTable}
-                deleteTable={deleteTable}/>
+                deleteTable={deleteTable}
+                submitting ={submitting}
+                />
             </Grid.Column>
             <Grid.Column width='6'>
                 {selectedTable && !editMode &&
@@ -31,7 +35,7 @@ export default function TableDashboard({tables,selectedTable,
                     openForm={openForm}
                     />}
                     {editMode &&
-                    <TableFrom closeForm={closeForm} table={selectedTable} createOrEdit={createOrEdit}/>}
+                    <TableFrom closeForm={closeForm} table={selectedTable} createOrEdit={createOrEdit} submitting={submitting}/>}
             </Grid.Column>
         </Grid>
     )
