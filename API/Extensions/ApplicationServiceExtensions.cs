@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Core;
 using Application.Tables;
+using Application.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -13,7 +13,7 @@ namespace API.Extensions
     public static class ApplicationServiceExtensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
-             IConfiguration config)//config to access appsetting.json file or appsettingdevelop....json
+            IConfiguration config)
         {
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
@@ -22,7 +22,6 @@ namespace API.Extensions
             {
                 opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
             });
-            //policy for allow all of the https requests (put, get, post, delete)
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
@@ -30,7 +29,7 @@ namespace API.Extensions
                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
                 });
             });
-            services.AddMediatR(typeof(List.Handler));
+            services.AddMediatR(typeof(Application.Tables.List.Handler));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
             return services;

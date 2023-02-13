@@ -9,8 +9,11 @@ import ProductDashboard from "../../features/product/dashboard/ProductDashboard"
 import { v4 as uuid } from "uuid";
 import agent from "../api/agent";
 import LoadingComponent from "./LoadingComponent";
+import { useStore } from "../stores/store";
 
 function App() {
+
+  const{tableStore} = useStore();
   const [tables, setTables] = useState<Table[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   
@@ -31,13 +34,16 @@ function App() {
       setTables(tables);
       setLoading(false);
     })
-  }, [])
+  }, []);
   useEffect(() => {
-    axios
-      .get<Product[]>("http://localhost:5000/api/products")
-      .then((response) => {
-        setProducts(response.data);
-      });
+    agent.Products.list().then(respone => {
+      let products: Product[] = [];
+      respone.forEach(product => {
+        products.push(product);
+      })
+      setProducts(products);
+      setLoading(false);
+    })          
   }, []);
 
   //for Table
@@ -97,13 +103,36 @@ function App() {
   function handleFormCloseProduct() {
     setEditMode(false);
   }
-  function handleCreateOrEditProduct(product: Product) {
-    product.id
-      ? setProducts([...products.filter((x) => x.id !== product.id), product])
-      : setProducts([...products, product]);
-    setEditMode(false);
-    setSelectedProduct(product);
+   function handleCreateOrEditProduct(product: Product) {
+    setSubmitting(true);
+    if (product.id) {
+      agent.Products.update(product).then(() => {
+        setProducts([...products.filter(x => x.id !== product.id), product]);
+        setSelectedProduct(product);
+        setEditMode(false);
+        setSubmitting(false);
+      })
+    } else {
+      product.id = uuid();
+      agent.Products.create(product).then(() => {
+        setProducts([...products, product]);
+        setSelectedProduct(product);
+        setEditMode(false);
+        setSubmitting(false);
+      });
+    }
   }
+    function handleDeleteProduct(id: string) {
+      setSubmitting(true);
+      agent.Products.delete(id).then(() => {
+        setProducts([...products.filter(x => x.id !== id)]);
+        setSubmitting(false);
+      })
+      
+    }
+  
+    
+  
 
   if (loading) return <LoadingComponent content="Loading app" />;
 
@@ -115,6 +144,8 @@ function App() {
         openFormProduct={handleFormOpenProduct}
       />
       <Container style={{ marginTop: "7em" }}>
+      <h2>{tableStore.title}</h2>
+
         <TableDashboard
           tables={tables}
           selectedTable={selectedTable}
@@ -136,7 +167,8 @@ function App() {
           openFormProduct={handleFormOpenProduct}
           closeFormProduct={handleFormCloseProduct}
           createOrEdit={handleCreateOrEditProduct}
-        />
+          submitting={submitting} 
+          deleteProduct={handleDeleteProduct}        />
       </Container>
     </>
   );

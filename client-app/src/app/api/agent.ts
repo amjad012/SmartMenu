@@ -1,5 +1,6 @@
 //all the reqeusts that go to our API
 import axios, { AxiosResponse } from "axios";
+import { Product } from "../models/product";
 import { Table } from "../models/table";
 
 const sleep = (delay:number) => {
@@ -38,8 +39,16 @@ const Tables ={
     update:(table:Table) => requests.put<void>(`/tables/${table.id}`,table),
     delete:(id: string) => requests.del<void>(`/tables/${id}`)
 }
+const Products = {
+    list:() => requests.get<Product[]>(`/products`),
+    details:(id:string) => requests.get<Table>(`/products/${id}`),
+    create:(product:Product) => requests.post<void>(`/products`, product),
+    update:(product:Product) => requests.put<void>(`/products/${product.id}`,product),
+    delete:(id: string) => requests.del<void>(`/products/${id}`)
+}
 
 const agent = {
-    Tables
+    Tables,
+    Products
 }
 export default agent;

@@ -6,9 +6,9 @@ interface Props {
   product: Product | undefined;
   closeFormProduct: () => void;
   createOrEdit:(product:Product) => void;
-
+  submitting:boolean;
 }
-export default function ProductForm({ product:selectedProduct, closeFormProduct,createOrEdit }: Props) {
+export default function ProductForm({ product:selectedProduct, closeFormProduct,createOrEdit,submitting }: Props) {
   const initialState = selectedProduct ?? {//if product is null
     id:'',
     name:'',
@@ -36,7 +36,7 @@ export default function ProductForm({ product:selectedProduct, closeFormProduct,
         <Form.Input placeholder="Photo" value={product.photo}name='photo' onChange={handleInputChange} />
         <Form.Input placeholder="Price" value={product.price}name='price' onChange={handleInputChange} />
         <Form.Input placeholder="Description" value={product.description}name='description' onChange={handleInputChange} />
-        <Button floated="right" positive type="submit" content="Submit" />
+        <Button loading={submitting} floated="right" positive type="submit" content="Submit" />
         <Button
           onClick={closeFormProduct}
           floated="right"
