@@ -30,6 +30,7 @@ namespace API.Extensions
                 });
             });
             services.AddMediatR(typeof(Application.Tables.List.Handler));
+            services.AddMediatR(typeof(Application.Tables.Edit.Handler));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 
             return services;

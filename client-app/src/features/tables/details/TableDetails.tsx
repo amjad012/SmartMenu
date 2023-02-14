@@ -1,16 +1,15 @@
 import React from 'react';
 import { Button, Card, Icon, Image } from 'semantic-ui-react';
-import { Table } from '../../../app/models/table';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
+import { useStore } from '../../../app/stores/store';
 
-interface Props{
-    table: Table;
-    cancelSelectTable:() => void;
-    openForm:(id:string) => void;
-}
-export default function TableDetails({table,cancelSelectTable,openForm}:Props){
+export default function TableDetails(){
+  const{tableStore} = useStore();
+  const{selectedTable: table, openForm,cancelSelectedTable} = tableStore;
+  
+  if(!table) return <LoadingComponent/>;
     return(
         <Card fluid>
-    {/* <Image src='/images/avatar/large/matthew.png' wrapped ui={false} /> */}
     <Card.Content>
       <Card.Header>{table.number}</Card.Header>
       <Card.Meta>
@@ -23,7 +22,7 @@ export default function TableDetails({table,cancelSelectTable,openForm}:Props){
     <Card.Content extra>
       <Button.Group width='2'>
           <Button onClick={() => openForm(table.id)}basic color='blue' content='Edit'/>  
-          <Button onClick={cancelSelectTable} basic color='grey' content='Cancel'/>  
+          <Button onClick={cancelSelectedTable} basic color='grey' content='Cancel'/>  
       </Button.Group>
     </Card.Content>
   </Card>

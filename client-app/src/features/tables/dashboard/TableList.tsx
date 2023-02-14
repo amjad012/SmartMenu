@@ -1,22 +1,23 @@
 import { SyntheticEvent, useState } from "react";
 import { Button, Item, Segment } from "semantic-ui-react";
 import { Table } from "../../../app/models/table";
+import { useStore } from "../../../app/stores/store";
 
 interface Props {
     tables: Table[];
-    selectTable: (id: string) => void;
     deleteTable: (id: string) => void;
     submitting: boolean;
 
 }
 
-export default function TableList({ tables, selectTable, deleteTable,submitting }: Props) {
+export default function TableList({ tables, deleteTable,submitting }: Props) {
     const [target,setTarget] = useState('');
 
     function handleTableDelete(e : SyntheticEvent<HTMLButtonElement>, id:string){
         setTarget(e.currentTarget.name);
         deleteTable(id);
     }
+    const{tableStore} = useStore();
     return (
         <Segment>
             <Item.Group divided>
@@ -30,7 +31,7 @@ export default function TableList({ tables, selectTable, deleteTable,submitting 
                             </Item.Description>
                             <Item.Extra>
                                 <Button floated='right' content='View' color='blue'
-                                    onClick={() => selectTable(table.id)}
+                                    onClick={() => tableStore.selectTable(table.id)}
                                 />
                                 <Button name={table.id} floated='right' content='Delete' color='red'
                                     loading={submitting && target === table.id} onClick={(e) => handleTableDelete(e, table.id)}

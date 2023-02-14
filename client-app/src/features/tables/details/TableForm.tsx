@@ -1,14 +1,14 @@
+import { observer } from "mobx-react-lite";
 import { ChangeEvent, useState } from "react";
 import { Button, Form, Segment } from "semantic-ui-react";
 import { Table } from "../../../app/models/table";
+import { useStore } from "../../../app/stores/store";
 
-interface Props {
-  table: Table | undefined;
-  closeForm: () => void;
-  createOrEdit: (table: Table) => void;
-  submitting:boolean;
-}
-export default function TableFrom({ table: selectedTable, closeForm, createOrEdit,submitting }: Props) {
+
+export default observer ( function TableFrom() {
+  const{tableStore} = useStore();
+  const{selectedTable,closeForm,createTable,updateTable,loading} = tableStore;
+
   const initialState = selectedTable ?? {//if table is null
     id: '',
     number: 0,
@@ -17,7 +17,7 @@ export default function TableFrom({ table: selectedTable, closeForm, createOrEdi
   const [table, setTable] = useState(initialState);
 
   function handleSubmit() {
-    createOrEdit(table);
+    table.id ? updateTable(table) : createTable(table);
   }
   //for change the value of input when click Submit button
   function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -29,7 +29,7 @@ export default function TableFrom({ table: selectedTable, closeForm, createOrEdi
       <Form onSubmit={handleSubmit} autoComplete='off' >
         <Form.Input placeholder="Number" value={table.number} name='number' onChange={handleInputChange} />
         <Form.Input type='date'placeholder="Date" value={table.date} name='date' onChange={handleInputChange} />
-        <Button loading={submitting} floated='right' positive type='submit' content='Submit' />
+        <Button loading={loading} floated='right' positive type='submit' content='Submit' />
         <Button
           onClick={closeForm}
           floated="right"
@@ -39,4 +39,4 @@ export default function TableFrom({ table: selectedTable, closeForm, createOrEdi
       </Form>
     </Segment>
   );
-}
+})
