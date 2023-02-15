@@ -15,13 +15,13 @@ namespace API.Controllers
         [HttpGet]//api/product someone reach this endpoints 
         public async Task<ActionResult<List<Product>>>GetProducts()
         {
-           return await Mediator.Send(new List.Qeury());
+           return await Mediator.Send(new List.Query());
         }
 
         [HttpGet("{id}")] //api/products/id=adao23oisnd
         public async Task<ActionResult<Product>>GetProduct(Guid id)
         {
-            return await Mediator.Send(new Details.Qeury{Id = id});
+            return await Mediator.Send(new Details.Query{Id = id});
         }
 
         [HttpPost]

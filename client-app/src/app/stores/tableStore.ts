@@ -5,23 +5,28 @@ import agent from "../api/agent";
 import { Table } from "../models/table";
 import {v4 as uuid} from 'uuid';
 export default class TableStore {
-    tables: Table[] = [];
+    tableRegistry = new Map<string, Table>();
     selectedTable: Table | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = false;
+    loadingInitial = true;
 
     constructor() {
         makeAutoObservable(this)
     }
+
+    get tablesByDate() {
+        return Array.from(this.tableRegistry.values()).sort((a,b) =>
+         Date.parse(a.date) - Date.parse(b.date))
+    }
+
     loadTables = async () => {
-        this.setLoadingInitial(true);
         try {
             const tables = await agent.Tables.list();//getting our activities and passing it out to a list
 
             tables.forEach(table => {
                 table.date = table.date.split('T')[0];//updating our state
-                this.tables.push(table);
+                this.tableRegistry.set(table.id, table);
             })
             this.setLoadingInitial(false);
             //setting the loading initial observable to false
@@ -40,7 +45,7 @@ export default class TableStore {
         this.loadingInitial = state;
     }
     selectTable = (id : string) => {
-        this.selectedTable =this.tables.find( a => a.id === id);
+        this.selectedTable =this.tableRegistry.get(id);
     }
     cancelSelectedTable = () => {
         this.selectedTable = undefined;
@@ -59,7 +64,7 @@ export default class TableStore {
         try {
             await agent.Tables.create(table);
             runInAction(() => {
-                this.tables.push(table);
+                this.tableRegistry.set(table.id, table)
                 this.selectedTable = table;
                 this.editMode = false;
                 this.loading = false;
@@ -76,11 +81,29 @@ export default class TableStore {
         try {
             await agent.Tables.update(table);
             runInAction(() => {
-                this.tables =[...this.tables.filter(a => a.id !== table.id), table];
+                this.tableRegistry.set(table.id, table)
                 this.selectedTable = table;
                 this.editMode = false;
                 this.loading = false;
             })
+        } catch (error) {
+            console.log(error);
+            runInAction(() => {
+                this.loading = false;
+            })
+        }
+    }
+    deleteTable = async(id:string) => {
+        this.loading = true;
+        try {
+            await agent.Tables.delete(id);
+            runInAction(() => {
+                this.tableRegistry.delete(id)
+                if(this.selectedTable?.id === id) this.cancelSelectedTable();
+                this.loading = false;
+
+            })
+
         } catch (error) {
             console.log(error);
             runInAction(() => {

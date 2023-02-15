@@ -10,13 +10,13 @@ namespace Application.Tables
 {
     public class Details
     {
-        public class Qeury : IRequest<Table>
+        public class Query : IRequest<Table>
         {
             public Guid Id { get; set; }
 
         }
 
-        public class Handler : IRequestHandler<Qeury, Table>
+        public class Handler : IRequestHandler<Query, Table>
         {
         private readonly DataContext _context;
             public Handler(DataContext context)
@@ -24,7 +24,7 @@ namespace Application.Tables
                 _context = context;
             }
 
-            public async Task<Table> Handle(Qeury request, CancellationToken cancellationToken)
+            public async Task<Table> Handle(Query request, CancellationToken cancellationToken)
             {
                return await _context.Tables.FindAsync(request.Id);
             } 

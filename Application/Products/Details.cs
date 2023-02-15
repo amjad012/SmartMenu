@@ -10,13 +10,13 @@ namespace Application.Products
 {
     public class Details
     {
-        public class Qeury : IRequest<Product>
+        public class Query : IRequest<Product>
         {
             public Guid Id { get; set; }
 
         }
 
-        public class Handler : IRequestHandler<Qeury, Product>
+        public class Handler : IRequestHandler<Query, Product>
         {
         private readonly DataContext _context;
             public Handler(DataContext context)
@@ -24,7 +24,7 @@ namespace Application.Products
                 _context = context;
             }
 
-            public async Task<Product> Handle(Qeury request, CancellationToken cancellationToken)
+            public async Task<Product> Handle(Query request, CancellationToken cancellationToken)
             {
                return await _context.Products.FindAsync(request.Id);
             } 

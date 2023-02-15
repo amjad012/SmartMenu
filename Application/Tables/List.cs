@@ -7,19 +7,19 @@ namespace Application.Tables
 {
     public class List
     {
-        public class Qeury : IRequest<List<Table>> {}
+        public class Query : IRequest<List<Table>> { }
 
-        public class Handler : IRequestHandler<Qeury, List<Table>>
+        public class Handler : IRequestHandler<Query, List<Table>>
         {
-        private readonly DataContext _context;
-    
-           public Handler(DataContext context)
-           {        
-            _context = context;
-           }
-            public async Task<List<Table>> Handle(Qeury request,CancellationToken token)
+            private readonly DataContext _context;
+
+            public Handler(DataContext context)
             {
-                
+                _context = context;
+            }
+
+            public async Task<List<Table>> Handle(Query request, CancellationToken token)
+            {
                 return await _context.Tables.ToListAsync();
             }
         }

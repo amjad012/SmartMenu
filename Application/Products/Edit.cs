@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using Domain;
 using MediatR;
@@ -15,16 +11,19 @@ namespace Application.Products
         {
             public Product Product { get; set; }
         }
-        public class Handler : IRequest<Command>
+
+        public class Handler : IRequestHandler<Command>
         {
-        private readonly DataContext _context;
-        private readonly IMapper _mapper;
+            private readonly DataContext _context;
+            private readonly IMapper _mapper;
+
             public Handler(DataContext context, IMapper mapper)
             {
                 _mapper = mapper;
                 _context = context;
             }
-            async Task<Unit>Handle(Command request, CancellationToken cancellationToken)
+
+            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var product = await _context.Tables.FindAsync(request.Product.Id);
                 _mapper.Map(request.Product, product);//auto mapper is going to take all of the properties that it has inside request table

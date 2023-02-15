@@ -3,7 +3,7 @@ export interface Product {
     name: string;
     category: string;
     kcal: number;
-    photo: string;
+    photo: string | null;
     price: number;
     description: string;
 }

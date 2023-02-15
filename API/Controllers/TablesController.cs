@@ -17,12 +17,12 @@ namespace API.Controllers
     [HttpGet]//api/table someone reach this endpoints 
     public async Task<ActionResult<List<Table>>>GetTables()
     {
-        return await Mediator.Send(new List.Qeury()); //Mediator from BaseApiController class
+        return await Mediator.Send(new List.Query()); //Mediator from BaseApiController class
     }
     [HttpGet("{id}")] //api/tables/id=adao23oisnd
     public async Task<ActionResult<Table>>GetTable(Guid id)
     {
-        return await Mediator.Send(new Details.Qeury{Id = id});
+        return await Mediator.Send(new Details.Query{Id = id});
     }
 
     [HttpPost]

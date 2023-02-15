@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Table } from "../models/table";
 import { Product } from "../models/product";
 import NavBar from "./NavBar";
 import TableDashboard from "../../features/tables/dashboard/TableDashboard";
@@ -15,7 +13,6 @@ import { Container } from "semantic-ui-react";
 function App() {
 
   const{tableStore} = useStore();
-  const [tables, setTables] = useState<Table[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   
   const [selectedProduct, setSelectedProduct] = useState<Product | undefined>(undefined);
@@ -27,6 +24,9 @@ function App() {
   useEffect(() => {
     tableStore.loadTables();
   }, [tableStore]);
+
+
+  //for product
   useEffect(() => {
     agent.Products.list().then(respone => {
       let products: Product[] = [];
@@ -38,17 +38,6 @@ function App() {
     })          
   }, []);
 
-  
-  function handleDeleteTable(id: string) {
-    setSubmitting(true);
-    agent.Tables.delete(id).then(() => {
-      setTables([...tables.filter((x) => x.id !== id)]);
-      setSubmitting(false);
-    })
-    
-  }
-
-  //for product
   function handleSelectProduct(id: string) {
     setSelectedProduct(products.find((x) => x.id === id));
   }
@@ -100,11 +89,7 @@ function App() {
     <>
       <NavBar openFormProduct={handleFormOpenProduct}/>
       <Container style={{ marginTop: "7em" }}>
-        <TableDashboard
-          tables={tableStore.tables}
-          deleteTable={handleDeleteTable}
-          submitting={submitting}
-        />
+        <TableDashboard />
         <ProductDashboard
           products={products}
           selectedProduct={selectedProduct}

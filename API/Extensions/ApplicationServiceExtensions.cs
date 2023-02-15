@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Tables;
 using Application.Core;
 using MediatR;
@@ -29,10 +25,8 @@ namespace API.Extensions
                     policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
                 });
             });
-            services.AddMediatR(typeof(Application.Tables.List.Handler));
-            services.AddMediatR(typeof(Application.Tables.Edit.Handler));
+            services.AddMediatR(typeof(List.Handler));
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-
             return services;
         }
     }

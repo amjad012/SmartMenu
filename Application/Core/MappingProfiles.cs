@@ -12,6 +12,7 @@ namespace Application.Core
         protected MappingProfiles()
         {
             CreateMap<Table, Table>();
+            CreateMap<Product, Product>();
         }
     }
 }

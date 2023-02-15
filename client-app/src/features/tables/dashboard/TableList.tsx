@@ -1,27 +1,24 @@
+import { observer } from "mobx-react-lite";
 import { SyntheticEvent, useState } from "react";
 import { Button, Item, Segment } from "semantic-ui-react";
-import { Table } from "../../../app/models/table";
 import { useStore } from "../../../app/stores/store";
 
-interface Props {
-    tables: Table[];
-    deleteTable: (id: string) => void;
-    submitting: boolean;
 
-}
 
-export default function TableList({ tables, deleteTable,submitting }: Props) {
+export default observer (function TableList() {
+    const{tableStore} = useStore();
     const [target,setTarget] = useState('');
+    const{deleteTable,tablesByDate,loading} = tableStore;
 
     function handleTableDelete(e : SyntheticEvent<HTMLButtonElement>, id:string){
         setTarget(e.currentTarget.name);
         deleteTable(id);
     }
-    const{tableStore} = useStore();
+    
     return (
         <Segment>
             <Item.Group divided>
-                {tables.map(table => (
+                {tablesByDate.map(table => (
                     <Item key={table.id}>
                         <Item.Content>
                             <Item.Header as='a'>Table Number: {table.number}</Item.Header>
@@ -33,8 +30,9 @@ export default function TableList({ tables, deleteTable,submitting }: Props) {
                                 <Button floated='right' content='View' color='blue'
                                     onClick={() => tableStore.selectTable(table.id)}
                                 />
-                                <Button name={table.id} floated='right' content='Delete' color='red'
-                                    loading={submitting && target === table.id} onClick={(e) => handleTableDelete(e, table.id)}
+                                <Button loading={loading && target === table.id}
+                                        name={table.id} floated='right' content='Delete' color='red'
+                                        onClick={(e) => handleTableDelete(e, table.id)}
                                 />
                                 
                             </Item.Extra>
@@ -44,4 +42,4 @@ export default function TableList({ tables, deleteTable,submitting }: Props) {
             </Item.Group>
         </Segment>
     )
-}
+})
