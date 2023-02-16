@@ -1,28 +1,25 @@
-import React, { SyntheticEvent, useState } from 'react';
+import { observer } from "mobx-react-lite";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Item, ItemContent, Segment } from "semantic-ui-react";
 import { Product } from "../../../app/models/product";
+import { useStore } from "../../../app/stores/store";
 
-interface Props {
-  products: Product[];
-  selectProduct: (id: string) => void;
-  deleteProduct: (id: string) => void;
-  submitting: boolean;
-}
-export default function ProductList({
-  products,
-  selectProduct,
-  deleteProduct,
-  submitting,
-}: Props) {
+export default observer(function ProductList() {
+  const { productStore } = useStore();
   const [target, setTarget] = useState("");
-  function handleProductDelete(e : SyntheticEvent<HTMLButtonElement>, id:string){
+  const { deleteProduct, productsByDate, loading } = productStore;
+
+  function handleProductDelete(
+    e: SyntheticEvent<HTMLButtonElement>,
+    id: string
+  ) {
     setTarget(e.currentTarget.name);
     deleteProduct(id);
-}
+  }
   return (
     <Segment>
       <Item.Group divided>
-        {products.map((product) => (
+        {productsByDate.map((product) => (
           <Item key={product.id}>
             <Item.Content>
               <Item.Header as="a">{product.name}</Item.Header>
@@ -34,14 +31,14 @@ export default function ProductList({
                   floated="right"
                   content="View"
                   color="blue"
-                  onClick={() => selectProduct(product.id)}
+                  onClick={() => productStore.selectProduct(product.id)}
                 />
                 <Button
+                  loading={loading && target === product.id}
                   name={product.id}
                   floated="right"
                   content="Delete"
                   color="red"
-                  loading={submitting && target === product.id}
                   onClick={(e) => handleProductDelete(e, product.id)}
                 />
               </Item.Extra>
@@ -51,4 +48,4 @@ export default function ProductList({
       </Item.Group>
     </Segment>
   );
-}
+});

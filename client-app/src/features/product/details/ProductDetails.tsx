@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button, Card, CardContent } from 'semantic-ui-react';
+import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { Product } from '../../../app/models/product';
+import { useStore } from '../../../app/stores/store';
 
-interface Props {
-    product: Product;
-    cancelSelectProduct:() => void;
-    openFormProduct:(id:string) => void;
 
-}
-export default function ProductDetails({product,cancelSelectProduct,openFormProduct}:Props){
+export default function ProductDetails(){
+    const{productStore} = useStore();
+    const{selectedProduct:product,openForm,cancelSelectedProduct} = productStore;
+    if(!product) return <LoadingComponent/>
     return (
         <Card fluid>
             <Card.Content>
@@ -18,8 +18,8 @@ export default function ProductDetails({product,cancelSelectProduct,openFormProd
             </Card.Content>
             <Card.Content>
                 <Button.Group width='2'>
-                    <Button onClick={() => openFormProduct(product.id)}basic color='blue' content='Edit'/>
-                    <Button onClick={cancelSelectProduct} basic color='grey' content='Cancel'/>
+                    <Button onClick={() => openForm(product.id)}basic color='blue' content='Edit'/>
+                    <Button onClick={cancelSelectedProduct} basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>
         </Card>
