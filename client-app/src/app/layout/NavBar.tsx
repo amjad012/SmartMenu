@@ -1,24 +1,23 @@
-import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { Button, Container, Menu } from 'semantic-ui-react';
-import productStore from '../stores/productStore';
 import { useStore } from '../stores/store';
-
+import React from 'react';
 
 
 export default function NavBar(){
-    const {tableStore} = useStore();
     const{productStore} = useStore();
     return (
         <Menu inverted fixed='top'>
             <Container>
-                <Menu.Item header>
+                <Menu.Item as={NavLink} to='/' header>
                     <img src="/assets/logo.png" alt="logo" style={{marginRight:'10px'}}/>
                     SmartMenu
                 </Menu.Item>
-                <Menu.Item name='Tables'/>
+                <Menu.Item as={NavLink} to='/tables' name='Tables'/>
+                <Menu.Item as={NavLink} to='/products' name='Menu'/>
                 <Menu.Item>
-                    <Button onClick={() => tableStore.openForm()} positive content='Create Table'/>
-                    <Button onClick={() => productStore.openForm()} content='Add product' style={{marginLeft:'5px'}}/>
+                    <Button as={NavLink} to='/createTable' positive content='Create Table'/>
+                    <Button as={NavLink} to='/createProduct' content='Create Product' style={{marginLeft:'5px'}}/>
                 </Menu.Item>
             </Container>
         </Menu>

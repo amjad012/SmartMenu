@@ -1,13 +1,20 @@
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
 
-export default function TableDetails(){
+export default observer (function TableDetails(){
   const{tableStore} = useStore();
-  const{selectedTable: table, openForm,cancelSelectedTable} = tableStore;
+  const{selectedTable: table,loadTable,loadingInitial} = tableStore;
+  const {id} = useParams();
+
+  useEffect(() => {
+    if(id) loadTable(id);
+  },[id, loadTable])
   
-  if(!table) return <LoadingComponent/>;
+  if(loadingInitial ||!table) return <LoadingComponent/>;
     return(
         <Card fluid>
     <Card.Content>
@@ -21,10 +28,10 @@ export default function TableDetails(){
     </Card.Content>
     <Card.Content extra>
       <Button.Group width='2'>
-          <Button onClick={() => openForm(table.id)}basic color='blue' content='Edit'/>  
-          <Button onClick={cancelSelectedTable} basic color='grey' content='Cancel'/>  
+          <Button as={Link} to={`/manage/${table.id}`} basic color='blue' content='Edit'/>  
+          <Button as={Link} to={'/tables'} basic color='grey' content='Cancel'/>  
       </Button.Group>
     </Card.Content>
   </Card>
     )
-}
+})

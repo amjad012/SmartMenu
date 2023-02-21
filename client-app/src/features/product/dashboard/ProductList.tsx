@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { SyntheticEvent, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Item, ItemContent, Segment } from "semantic-ui-react";
-import { Product } from "../../../app/models/product";
+ import { Product } from "../../../app/models/product";
 import { useStore } from "../../../app/stores/store";
 
 export default observer(function ProductList() {
@@ -31,7 +32,7 @@ export default observer(function ProductList() {
                   floated="right"
                   content="View"
                   color="blue"
-                  onClick={() => productStore.selectProduct(product.id)}
+                  as={Link} to ={`/products/${product.id}`}
                 />
                 <Button
                   loading={loading && target === product.id}

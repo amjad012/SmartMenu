@@ -9,7 +9,7 @@ namespace Application.Products
     {
         public class Command : IRequest
         {
-            public Product Product { get; set; }
+            public Product Product  { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>

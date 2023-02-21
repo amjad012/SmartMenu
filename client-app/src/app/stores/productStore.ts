@@ -1,7 +1,8 @@
-import { Product } from "../models/product";
+
 import { makeAutoObservable, runInAction } from "mobx"
 import { v4 as uuid } from 'uuid';
 import agent from "../api/agent";
+import { Product } from "../models/product";
 
 
 export default class ProductStore {
@@ -33,21 +34,36 @@ export default class ProductStore {
             this.setLoadingInitial(false);
         }
     }
+    //load single product
+    private setProduct = (product : Product) => {
+        this.productRegistry.set(product.id, product);
+
+    }
+//    loadProduct = async(id : string) => {
+//         let product = this.getProduct(id);
+//         if(product) {this.selectedProduct = product;
+//             this.selectedProduct = product; 
+//             return product;   
+//         }
+//     else {
+//         this.setLoadingInitial(true);
+//         try {
+//             product = await agent.Products.details(id);
+//             thirn product;
+//         } catch s.setProduct(product);
+//             runInAction(() => this.selectedProduct = product);
+//             this.setLoadingInitial(false);
+//             retu(error) {
+//             console.log(error);
+//         }
+//     }
+//    }
+    private getProduct = (id : string) => {
+        return this.productRegistry.get(id);
+    }
+    
     setLoadingInitial = (state: boolean) => {
         this.loadingInitial = state;
-    }
-    selectProduct = (id: string) => {
-        this.selectedProduct = this.productRegistry.get(id);
-    }
-    cancelSelectedProduct = () => {
-        this.selectedProduct = undefined;
-    }
-    openForm = (id?: string) => {
-        id ? this.selectProduct(id) : this.cancelSelectedProduct();
-        this.editMode = true;
-    }
-    closeForm = () => {
-        this.editMode = false;
     }
     createProduct = async (product: Product) => {
         this.loading = true;
@@ -91,7 +107,6 @@ export default class ProductStore {
             await agent.Products.delete(id);
             runInAction(() => {
                 this.productRegistry.delete(id)
-                if (this.selectedProduct?.id === id) this.cancelSelectedProduct();
                 this.loading = false;
 
             })

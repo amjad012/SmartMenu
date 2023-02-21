@@ -1,7 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { SyntheticEvent, useState } from "react";
+import { Link } from "react-router-dom";
 import { Button, Item, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/store";
+import React from 'react';
 
 
 
@@ -27,9 +29,7 @@ export default observer (function TableList() {
                                 Description here
                             </Item.Description>
                             <Item.Extra>
-                                <Button floated='right' content='View' color='blue'
-                                    onClick={() => tableStore.selectTable(table.id)}
-                                />
+                                <Button as={Link} to={`/tables/${table.id}`} floated='right' content='View' color='blue'/>
                                 <Button loading={loading && target === table.id}
                                         name={table.id} floated='right' content='Delete' color='red'
                                         onClick={(e) => handleTableDelete(e, table.id)}

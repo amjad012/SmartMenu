@@ -3,12 +3,15 @@ import { Button, Form, Segment } from "semantic-ui-react";
 import { Product } from "../../../app/models/product";
 import { useStore } from "../../../app/stores/store";
 import { observer } from "mobx-react-lite";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default observer (function ProductForm() {
   const{productStore} = useStore();
-  const{selectedProduct, closeForm,createProduct,updateProduct,loading} = productStore;
+  const{selectedProduct,createProduct,updateProduct,loading,loadingInitial} = productStore;
+  const{id} = useParams();
+  const navigate = useNavigate();
 
-  const initialState = selectedProduct ?? {//if product is null
+  const[product, setProduct] = useState<Product>({  //if product is null
     id:'',
     name:'',
     category:'',
@@ -16,8 +19,7 @@ export default observer (function ProductForm() {
     photo:'',
     price:0,
     description:''
-  } 
-  const [product, setProduct] = useState(initialState);
+  });
 
   function handleSubmit(){
     product.id ? updateProduct(product) : createProduct(product);
@@ -37,7 +39,6 @@ export default observer (function ProductForm() {
         <Form.Input placeholder="Description" value={product.description}name='description' onChange={handleInputChange} />
         <Button loading={loading} floated="right" positive type="submit" content="Submit" />
         <Button
-          onClick={closeForm}
           floated="right"
           type="button"
           content="Cancel"

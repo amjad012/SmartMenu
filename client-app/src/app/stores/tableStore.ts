@@ -9,7 +9,7 @@ export default class TableStore {
     selectedTable: Table | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor() {
         makeAutoObservable(this)
@@ -21,12 +21,12 @@ export default class TableStore {
     }
 
     loadTables = async () => {
+        this.setLoadingInitial(true);
         try {
-            const tables = await agent.Tables.list();//getting our activities and passing it out to a list
+            const tables = await agent.Tables.list();//getting our tables and passing it out to a list
 
             tables.forEach(table => {
-                table.date = table.date.split('T')[0];//updating our state
-                this.tableRegistry.set(table.id, table);
+                this.setTable(table);
             })
             this.setLoadingInitial(false);
             //setting the loading initial observable to false
@@ -41,23 +41,39 @@ export default class TableStore {
 
         }
     }
+    private setTable = (table : Table) => {
+        table.date = table.date.split('T')[0];//updating our state
+                this.tableRegistry.set(table.id, table);
+    }
+    //load single table
+    loadTable = async (id : string) => {
+        let table = this.getTable(id);
+        if(table) {this.selectedTable = table;
+            this.selectedTable = table;
+            return table;
+            }
+        else {
+            this.setLoadingInitial(true);
+            try {
+                table = await agent.Tables.details(id);
+                this.setTable(table);
+                runInAction(() => this.selectedTable = table);
+                this.setLoadingInitial(false);
+                return table;
+            } catch (error) {
+                console.log(error);
+                this.setLoadingInitial(false);
+            }
+        }
+    }
+    private getTable = (id : string) => {
+        return this.tableRegistry.get(id);
+    }
+        
     setLoadingInitial = (state: boolean) => {
         this.loadingInitial = state;
     }
-    selectTable = (id : string) => {
-        this.selectedTable =this.tableRegistry.get(id);
-    }
-    cancelSelectedTable = () => {
-        this.selectedTable = undefined;
-    }
-    openForm = ( id? : string) => {
-        id ? this.selectTable(id) : this.cancelSelectedTable();
-        this.editMode = true;
-    }
-
-    closeForm = () => {
-        this.editMode = false;
-    }
+   
     createTable = async(table : Table) => {
         this.loading = true;
         table.id = uuid();
@@ -99,9 +115,7 @@ export default class TableStore {
             await agent.Tables.delete(id);
             runInAction(() => {
                 this.tableRegistry.delete(id)
-                if(this.selectedTable?.id === id) this.cancelSelectedTable();
                 this.loading = false;
-
             })
 
         } catch (error) {

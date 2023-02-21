@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Card, CardContent } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { Product } from '../../../app/models/product';
@@ -7,8 +8,11 @@ import { useStore } from '../../../app/stores/store';
 
 export default function ProductDetails(){
     const{productStore} = useStore();
-    const{selectedProduct:product,openForm,cancelSelectedProduct} = productStore;
-    if(!product) return <LoadingComponent/>
+    const{selectedProduct:product,loadingInitial} = productStore;
+    const{id} = useParams();
+
+
+    if(!product || ! product) return <LoadingComponent/>
     return (
         <Card fluid>
             <Card.Content>
@@ -18,8 +22,8 @@ export default function ProductDetails(){
             </Card.Content>
             <Card.Content>
                 <Button.Group width='2'>
-                    <Button onClick={() => openForm(product.id)}basic color='blue' content='Edit'/>
-                    <Button onClick={cancelSelectedProduct} basic color='grey' content='Cancel'/>
+                    <Button as={Link} basic color='blue' content='Edit'/>
+                    <Button  basic color='grey' content='Cancel'/>
                 </Button.Group>
             </Card.Content>
         </Card>

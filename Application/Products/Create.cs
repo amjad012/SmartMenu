@@ -7,13 +7,14 @@ using MediatR;
 using Persistence;
 using static Application.Products.Create;
 
+
 namespace Application.Products
 {
     public class Create
     {
         public class Command : IRequest
         {
-            public Product Product { get; set; }
+            public Product Product{ get; set; }
         }
     }
     public class Handler : IRequestHandler<Command>
